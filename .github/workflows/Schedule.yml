@@ -26,20 +26,15 @@ jobs:
       - name: setup Node.js
         uses: actions/setup-node@v4
 
-      - name: Install dependencies(Node)
-        run: npm install
-
       # 3.Install Newman & Reporter
       - name: Install Newman & Reporter
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
-
       
       - name: Run Postman
         run: 'newman run Trello_Anna.postman_collection.json -e Trello_Environment.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export report.html'
-          
-
+   
       # 5. Check htmlextra
       - name: Check htmlextra
         run: ls   
